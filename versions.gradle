@@ -32,12 +32,14 @@ versions.kotlin = "1.2.41"
 versions.anko = "0.10.5"
 
 /* androidx */
-//versions.androidx = "1.0.0-alpha1"
+versions.androidx = "1.0.0-alpha1"
+versions.androidx_arch_core = "2.0.0-alpha1"
 versions.androidx_constraintlayout = "1.1.0"
 versions.androidx_appcompat = "1.0.0-alpha1"
 versions.androidx_cardview = "1.0.0-alpha1"
 versions.androidx_material = "1.0.0-alpha1"
 versions.androidx_wear = "1.0.0-alpha1"
+versions.androidx_databinding = "3.2.0-alpha15"
 
 versions.androidx_room = "2.0.0-alpha1"
 versions.androidx_lifecycle = "2.0.0-alpha1"
@@ -63,6 +65,8 @@ versions.rxPermission = "0.9.5@aar"
 
 versions.rxjava2 = "2.1.3"
 versions.rx_android = "2.0.1"
+versions.rxkotlin = "2.2.0"
+versions.paperparcel = "2.0.6"
 
 versions.okhttp3_runtime = "3.9.1"
 versions.okhttp3_logging_interceptor = "3.9.0"
@@ -76,7 +80,7 @@ versions.realm = "5.1.0"
 
 /* testings */
 versions.junit = "4.12"
-versions.espresso = "3.0.1"
+versions.espresso = "3.1.0-alpha1"
 
 versions.apache_commons = "2.5"
 versions.mockito = "2.7.19"
@@ -84,8 +88,8 @@ versions.mockito_all = "1.10.19"
 versions.dexmaker = "2.2.0"
 
 
-versions.atsl_runner = "1.0.1"
-versions.atsl_rules = "1.0.1"
+versions.atsl_runner = "1.1.0-alpha1"
+versions.atsl_rules = "1.1.0-alpha1"
 versions.hamcrest = "1.3"
 
 def build_versions = [:]
@@ -114,11 +118,24 @@ deps.kotlin = kotlin
 
 /* androidx */
 def androidx = [:]
+androidx.annotation = "androidx.annotation:annotation:${versions.androidx}"
 androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:${versions.androidx_constraintlayout}"
 androidx.appcompat = "androidx.appcompat:appcompat:${versions.androidx_appcompat}"
 androidx.cardview = "androidx.cardview:cardview:${versions.androidx_cardview}"
 androidx.material = "com.google.android.material:material:${versions.androidx_material}"
 androidx.wear = "androidx.wear:wear:${versions.androidx_wear}"
+
+androidx.fragment = "androidx.fragment:fragment:${versions.androidx}"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:${versions.androidx}"
+androidx.databinding_compiler = "androidx.databinding:databinding-compiler:${versions.androidx_databinding}"
+
+/* versions.androidx_arch_core */
+def arch_core = [:]
+arch_core.core = "androidx.arch.core:core:${versions.androidx_arch_core}"
+arch_core.common = "androidx.arch.core:core-common:${versions.androidx_arch_core}"
+arch_core.runtime = "androidx.arch.core:core-runtime:${versions.androidx_arch_core}"
+arch_core.testing = "androidx.arch.core:core-testing:${versions.androidx_arch_core}"
+androidx.arch_core = arch_core
 
 /* androidx_room */
 def room = [:]
@@ -140,7 +157,6 @@ lifecycle.livedata = "androidx.lifecycle:lifecycle-livedata:${versions.androidx_
 lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:${versions.androidx_lifecycle}" //annotationProcessor or kapt
 // alternately - if using Java8, use the following instead of lifecycle-compiler
 lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:${versions.androidx_lifecycle}"
-lifecycle.testing = "androidx.arch.core:core-testing:${versions.androidx_lifecycle}"
 androidx.lifecycle = lifecycle
 
 /* androidx_paging */
@@ -187,6 +203,7 @@ deps.firebase = firebase
 deps.timber = "com.jakewharton.timber:timber:${versions.timber}"
 deps.conceal = "com.facebook.conceal:conceal:${versions.conceal}"
 deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+deps.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
 deps.ktx = "androidx.core:core-ktx:${versions.ktx}"
 deps.rxpermissions2 = "com.tbruyelle.rxpermissions2:rxpermissions:${versions.rxPermission}"
@@ -195,6 +212,12 @@ def glide = [:]
 glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
+
+def paperparcel = [:]
+paperparcel.runtime = "nz.bradcampbell:paperparcel:${versions.paperparcel}"
+paperparcel.kotlin = "nz.bradcampbell:paperparcel-kotlin:${versions.paperparcel}"
+paperparcel.compiler = "nz.bradcampbell:paperparcel-compiler:${versions.paperparcel}"
+deps.paperparcel = paperparcel
 
 def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
@@ -222,18 +245,20 @@ deps.leakcanary_no_op = "com.squareup.leakcanary:leakcanary-android-no-op:${vers
 
 
 def espresso = [:]
-espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
-espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
-espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+espresso.core = "androidx.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "androidx.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "androidx.test.espresso:espresso-intents:$versions.espresso"
+espresso.idling = "androidx.test.espresso:espresso-idling-resource:$versions.espresso"
 deps.espresso = espresso
 
 def atsl = [:]
-atsl.runner = "com.android.support.test:runner:$versions.atsl_runner"
-atsl.rules = "com.android.support.test:rules:$versions.atsl_runner"
+atsl.runner = "androidx.test:runner:$versions.atsl_runner"
+atsl.rules = "androidx.test:rules:$versions.atsl_rules"
 deps.atsl = atsl
 
 def mockito = [:]
 mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.android = "org.mockito:mockito-android:$versions.mockito"
 mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
 deps.mockito = mockito
 
