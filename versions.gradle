@@ -57,6 +57,7 @@ versions.firebase_database = "15.0.0"
 /* utils */
 versions.timber = "4.7.0"
 versions.glide = "4.7.1"
+versions.fresco = "1.9.0"
 versions.stetho = "1.5.0"
 versions.butterKnife = "8.8.1"
 versions.conceal = "2.0.2@aar"
@@ -211,6 +212,19 @@ deps.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
 deps.rx_android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
 deps.ktx = "androidx.core:core-ktx:${versions.ktx}"
 deps.rxpermissions2 = "com.tbruyelle.rxpermissions2:rxpermissions:${versions.rxPermission}"
+
+
+/**
+ * Fresco is a powerful system for displaying images in Android applications developed by facebook
+ * https://github.com/facebook/fresco
+ * */
+
+def fresco = [:]
+fresco.runtime = "com.facebook.fresco:fresco:${versions.fresco}"
+fresco.gif = "com.facebook.fresco:animated-gif:${versions.fresco}" // For animated GIF support
+fresco.webp = "com.facebook.fresco:webpsupport:${versions.fresco}" // For WebP support
+fresco.webp_animated = "com.facebook.fresco:animated-webp:${versions.fresco}" // For animated WebP support
+deps.fresco = fresco
 
 def glide = [:]
 glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
