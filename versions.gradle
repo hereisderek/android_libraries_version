@@ -174,11 +174,26 @@ androidx.paging = paging
 /* androidx_navigation to be released in the future */ 
 /* https://developer.android.com/topic/libraries/architecture/adding-components#navigation */
 def navigation = [:]
+navigation.common = "androidx.navigation:navigation-common:${versions.androidx_navigation}"
+navigation.common_ktx = "androidx.navigation:navigation-common-ktx:${versions.androidx_navigation}"
 navigation.fragment = "androidx.navigation:navigation-fragment:${versions.androidx_navigation}"
 navigation.ui = "androidx.navigation:navigation-ui:${versions.androidx_navigation}"
 navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${versions.androidx_navigation}"
 navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:${versions.androidx_navigation}"
 navigation.testing = "androidx.navigation:navigation-testing:${versions.androidx_navigation}"
+
+navigation.legacy_common = "android.arch.navigation:navigation-common:${versions.androidx_navigation}"
+navigation.legacy_common_ktx = "android.arch.navigation:navigation-common-ktx:${versions.androidx_navigation}"
+navigation.legacy_fragment = "android.arch.navigation:navigation-fragment:${versions.androidx_navigation}"
+navigation.legacy_ui = "android.arch.navigation:navigation-ui:${versions.androidx_navigation}"
+navigation.legacy_fragment_ktx = "android.arch.navigation:navigation-fragment-ktx:${versions.androidx_navigation}"
+navigation.legacy_ui_ktx = "android.arch.navigation:navigation-ui-ktx:${versions.androidx_navigation}"
+navigation.legacy_testing = "android.arch.navigation:navigation-testing:${versions.androidx_navigation}"
+
+//navigation.classpath = "androidx.navigation:safe-args-gradle-plugin:${versions.androidx_navigation}" //classpath
+navigation.classpath = "android.arch.navigation:navigation-safe-args-gradle-plugin:${versions.androidx_navigation}" //classpath
+navigation.plugin_safeargs = "androidx.navigation.safeargs" //apply plugin:
+
 androidx.navigation = navigation
 
 deps.androidx = androidx
